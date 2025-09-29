@@ -6,5 +6,16 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            Text = string.Format("Координаты: {0}, {1}", e.X, e.Y);
+            textBox1.Text = (e.X + e.Y).ToString();
+        }
     }
 }
