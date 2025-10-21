@@ -28,34 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip2 = new MenuStrip();
-            colorToolStripMenuItem = new ToolStripMenuItem();
+            components = new System.ComponentModel.Container();
+            contextMenuStrip1 = new ContextMenuStrip(components);
             toolStripComboBox1 = new ToolStripComboBox();
             toolStripTextBox1 = new ToolStripTextBox();
             toolStripTextBox2 = new ToolStripTextBox();
             toolStripTextBox3 = new ToolStripTextBox();
             toolStripSeparator1 = new ToolStripSeparator();
             closeToolStripMenuItem = new ToolStripMenuItem();
-            button1 = new Button();
-            menuStrip2.SuspendLayout();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // menuStrip2
+            // contextMenuStrip1
             // 
-            menuStrip2.ImageScalingSize = new Size(24, 24);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { colorToolStripMenuItem });
-            menuStrip2.Location = new Point(0, 0);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(800, 33);
-            menuStrip2.TabIndex = 1;
-            menuStrip2.Text = "menuStrip2";
-            // 
-            // colorToolStripMenuItem
-            // 
-            colorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripComboBox1, toolStripTextBox1, toolStripTextBox2, toolStripTextBox3, toolStripSeparator1, closeToolStripMenuItem });
-            colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            colorToolStripMenuItem.Size = new Size(71, 29);
-            colorToolStripMenuItem.Text = "&Color";
+            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { toolStripComboBox1, toolStripTextBox1, toolStripTextBox2, toolStripTextBox3, toolStripSeparator1, closeToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(241, 219);
+            contextMenuStrip1.Text = "&Color";
             // 
             // toolStripComboBox1
             // 
@@ -63,7 +53,6 @@
             toolStripComboBox1.Items.AddRange(new object[] { "белый", "красный", "черный", "синий", "желтый" });
             toolStripComboBox1.Name = "toolStripComboBox1";
             toolStripComboBox1.Size = new Size(121, 33);
-            toolStripComboBox1.ToolTipText = "Готовые цвета";
             toolStripComboBox1.SelectedIndexChanged += toolStripComboBox1_SelectedIndexChanged;
             // 
             // toolStripTextBox1
@@ -93,51 +82,36 @@
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(267, 6);
+            toolStripSeparator1.Size = new Size(237, 6);
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(270, 34);
+            closeToolStripMenuItem.Size = new Size(240, 32);
             closeToolStripMenuItem.Text = "E&xit";
             closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(31, 372);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 34);
-            button1.TabIndex = 2;
-            button1.Text = "Close";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += closeToolStripMenuItem_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
-            Controls.Add(menuStrip2);
+            ContextMenuStrip = contextMenuStrip1;
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
-            menuStrip2.ResumeLayout(false);
-            menuStrip2.PerformLayout();
+            contextMenuStrip1.ResumeLayout(false);
+            contextMenuStrip1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private MenuStrip menuStrip2;
-        private ToolStripMenuItem colorToolStripMenuItem;
+        private ContextMenuStrip contextMenuStrip1;
         private ToolStripComboBox toolStripComboBox1;
         private ToolStripTextBox toolStripTextBox1;
         private ToolStripTextBox toolStripTextBox2;
         private ToolStripTextBox toolStripTextBox3;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem closeToolStripMenuItem;
-        private Button button1;
     }
 }
