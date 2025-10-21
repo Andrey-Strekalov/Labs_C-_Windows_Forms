@@ -29,89 +29,93 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            toolStripComboBox1 = new ToolStripComboBox();
-            toolStripTextBox1 = new ToolStripTextBox();
-            toolStripTextBox2 = new ToolStripTextBox();
-            toolStripTextBox3 = new ToolStripTextBox();
-            toolStripSeparator1 = new ToolStripSeparator();
-            closeToolStripMenuItem = new ToolStripMenuItem();
-            contextMenuStrip1.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            MainStatusStrip = new StatusStrip();
+            toolStripStatusLabelState = new ToolStripStatusLabel();
+            toolStripStatusLabelClock = new ToolStripStatusLabel();
+            toolStripDropDownButton1 = new ToolStripDropDownButton();
+            toolStripMenuItemDate = new ToolStripMenuItem();
+            toolStripMenuItemTime = new ToolStripMenuItem();
+            timerDateTimeUpdate = new System.Windows.Forms.Timer(components);
+            MainStatusStrip.SuspendLayout();
             SuspendLayout();
             // 
-            // contextMenuStrip1
+            // MainStatusStrip
             // 
-            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { toolStripComboBox1, toolStripTextBox1, toolStripTextBox2, toolStripTextBox3, toolStripSeparator1, closeToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(241, 219);
-            contextMenuStrip1.Text = "&Color";
+            MainStatusStrip.ImageScalingSize = new Size(24, 24);
+            MainStatusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelState, toolStripStatusLabelClock, toolStripDropDownButton1 });
+            MainStatusStrip.Location = new Point(0, 419);
+            MainStatusStrip.Name = "MainStatusStrip";
+            MainStatusStrip.Size = new Size(800, 31);
+            MainStatusStrip.TabIndex = 0;
+            MainStatusStrip.Text = "statusStrip1";
             // 
-            // toolStripComboBox1
+            // toolStripStatusLabelState
             // 
-            toolStripComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            toolStripComboBox1.Items.AddRange(new object[] { "белый", "красный", "черный", "синий", "желтый" });
-            toolStripComboBox1.Name = "toolStripComboBox1";
-            toolStripComboBox1.Size = new Size(121, 33);
-            toolStripComboBox1.SelectedIndexChanged += toolStripComboBox1_SelectedIndexChanged;
+            toolStripStatusLabelState.Name = "toolStripStatusLabelState";
+            toolStripStatusLabelState.Size = new Size(739, 24);
+            toolStripStatusLabelState.Spring = true;
+            toolStripStatusLabelState.TextAlign = ContentAlignment.TopLeft;
             // 
-            // toolStripTextBox1
+            // toolStripStatusLabelClock
             // 
-            toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.Size = new Size(100, 31);
-            toolStripTextBox1.Text = "0";
-            toolStripTextBox1.ToolTipText = "Красный";
-            toolStripTextBox1.TextChanged += toolStripTextBox1_TextChanged;
+            toolStripStatusLabelClock.BorderSides = ToolStripStatusLabelBorderSides.Left | ToolStripStatusLabelBorderSides.Top | ToolStripStatusLabelBorderSides.Right | ToolStripStatusLabelBorderSides.Bottom;
+            toolStripStatusLabelClock.Name = "toolStripStatusLabelClock";
+            toolStripStatusLabelClock.Size = new Size(4, 24);
             // 
-            // toolStripTextBox2
+            // toolStripDropDownButton1
             // 
-            toolStripTextBox2.Name = "toolStripTextBox2";
-            toolStripTextBox2.Size = new Size(100, 31);
-            toolStripTextBox2.Text = "0";
-            toolStripTextBox2.ToolTipText = "Зеленый";
-            toolStripTextBox2.TextChanged += toolStripTextBox1_TextChanged;
+            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItemDate, toolStripMenuItemTime });
+            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
+            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
+            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            toolStripDropDownButton1.Size = new Size(42, 28);
+            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
-            // toolStripTextBox3
+            // toolStripMenuItemDate
             // 
-            toolStripTextBox3.Name = "toolStripTextBox3";
-            toolStripTextBox3.Size = new Size(100, 31);
-            toolStripTextBox3.Text = "0";
-            toolStripTextBox3.ToolTipText = "Синий";
-            toolStripTextBox3.TextChanged += toolStripTextBox1_TextChanged;
+            toolStripMenuItemDate.Name = "toolStripMenuItemDate";
+            toolStripMenuItemDate.Size = new Size(240, 34);
+            toolStripMenuItemDate.Text = "Текущая дата";
+            toolStripMenuItemDate.Click += toolStripMenuItemDate_Click;
             // 
-            // toolStripSeparator1
+            // toolStripMenuItemTime
             // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(237, 6);
+            toolStripMenuItemTime.Name = "toolStripMenuItemTime";
+            toolStripMenuItemTime.Size = new Size(240, 34);
+            toolStripMenuItemTime.Text = "Текущее время";
+            toolStripMenuItemTime.Click += toolStripMenuItemTime_Click;
             // 
-            // closeToolStripMenuItem
+            // timerDateTimeUpdate
             // 
-            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(240, 32);
-            closeToolStripMenuItem.Text = "E&xit";
-            closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
+            timerDateTimeUpdate.Enabled = true;
+            timerDateTimeUpdate.Interval = 1000;
+            timerDateTimeUpdate.Tick += timerDateTimeUpdate_Tick;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            ContextMenuStrip = contextMenuStrip1;
+            Controls.Add(MainStatusStrip);
             Name = "Form1";
             Text = "Form1";
-            contextMenuStrip1.ResumeLayout(false);
-            contextMenuStrip1.PerformLayout();
+            MouseMove += Form1_MouseMove;
+            MainStatusStrip.ResumeLayout(false);
+            MainStatusStrip.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private ContextMenuStrip contextMenuStrip1;
-        private ToolStripComboBox toolStripComboBox1;
-        private ToolStripTextBox toolStripTextBox1;
-        private ToolStripTextBox toolStripTextBox2;
-        private ToolStripTextBox toolStripTextBox3;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem closeToolStripMenuItem;
+        private StatusStrip MainStatusStrip;
+        private ToolStripStatusLabel toolStripStatusLabelState;
+        private ToolStripStatusLabel toolStripStatusLabelClock;
+        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripMenuItem toolStripMenuItemDate;
+        private ToolStripMenuItem toolStripMenuItemTime;
+        private System.Windows.Forms.Timer timerDateTimeUpdate;
     }
 }
