@@ -2,60 +2,58 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        DateTimeFormat dtFormat;
-        ToolStripMenuItem currentCheckedItem;
+        double x, y, z, a, b;
         public Form1()
         {
             InitializeComponent();
-            currentCheckedItem = toolStripMenuItemTime;
-            currentCheckedItem.Checked = true;
+
         }
 
-
-        private void timerDateTimeUpdate_Tick(object sender, EventArgs e)
+        private void toolStripComboBoxA_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string info = "";
-            if (dtFormat == DateTimeFormat.ShowTime)
+            try
             {
-                info = DateTime.Now.ToLongTimeString();
-            }
-            else
-            {
-                info = DateTime.Now.ToLongDateString();
+                y = double.Parse(toolStripComboBoxY.Text);
+                z = double.Parse(toolStripComboBoxZ.Text);
+                x = double.Parse(toolStripTextBoxX.Text);
+                a = double.Parse(toolStripTextBoxA.Text);
+                b = double.Parse(toolStripTextBoxB.Text);
 
             }
-
-            toolStripStatusLabelClock.Text = info;
+            catch
+            {
+                MessageBox.Show("Ошибка при вводе значений");
+            }
         }
 
-        private void toolStripMenuItemDate_Click(object sender, EventArgs e)
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            currentCheckedItem.Checked = false;
-            dtFormat = DateTimeFormat.ShowDate;
-            currentCheckedItem = toolStripMenuItemDate;
-            currentCheckedItem.Checked = true;
+            Application.Exit();
         }
 
-        private void toolStripMenuItemTime_Click(object sender, EventArgs e)
+        private void calcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            currentCheckedItem.Checked = false;
-            dtFormat = DateTimeFormat.ShowTime;
-            currentCheckedItem = toolStripMenuItemTime;
-            currentCheckedItem.Checked = true;
+            try
+            {
+
+                double result = a * x + ((b * y) / Math.Log10(z)) + ((Math.Sin(z)) / (Math.Cos(y)));
+                this.Text = result.ToString();
+            }
+            catch
+            {
+
+                MessageBox.Show("Проверьте корректность введеных данных.", "Возможно введены не все данные");
+            }
         }
 
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabelState.Text = (e.X + ";" + e.Y).ToString();
-
+            this.Text = "";
+            toolStripComboBoxY.Text = "";
+            toolStripComboBoxZ.Text = "";
+            toolStripTextBoxX.Text = "";
+            toolStripTextBoxA.Text = "";
+            toolStripTextBoxB.Text = "";
         }
-
-        public enum DateTimeFormat
-        {
-            ShowTime,
-            ShowDate
-        }
-
-
     }
 }
