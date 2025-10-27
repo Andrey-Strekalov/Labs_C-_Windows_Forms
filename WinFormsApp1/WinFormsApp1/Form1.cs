@@ -2,58 +2,51 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        double x, y, z, a, b;
+        double x, y, term, result;
         public Form1()
         {
             InitializeComponent();
 
         }
 
-        private void toolStripComboBoxA_SelectedIndexChanged(object sender, EventArgs e)
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            try
+            x = e.X;
+            y = e.Y;
+
+            switch (term)
             {
-                y = double.Parse(toolStripComboBoxY.Text);
-                z = double.Parse(toolStripComboBoxZ.Text);
-                x = double.Parse(toolStripTextBoxX.Text);
-                a = double.Parse(toolStripTextBoxA.Text);
-                b = double.Parse(toolStripTextBoxB.Text);
+                case 1:
+                    {
+                        result = x / (Math.Abs(y - x * x));
+                        toolStripStatusLabel1.Text = result.ToString();
+                    }
+                    break;
+                case 2:
+                    {
+                        result = Math.Sqrt(Math.Abs(x) - Math.Sqrt(y));
+                        toolStripStatusLabel1.Text = result.ToString();
+                    }
+                    break;
+                case 3:
+                    {
+                        result = Math.Cos(x) + Math.Sin(y);
+                        toolStripStatusLabel1.Text = result.ToString();
+                    }
+                    break;
+                default: break;
 
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка при вводе значений");
-            }
-        }
-
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void calcToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                double result = a * x + ((b * y) / Math.Log10(z)) + ((Math.Sin(z)) / (Math.Cos(y)));
-                this.Text = result.ToString();
-            }
-            catch
-            {
-
-                MessageBox.Show("Проверьте корректность введеных данных.", "Возможно введены не все данные");
             }
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            this.Text = "";
-            toolStripComboBoxY.Text = "";
-            toolStripComboBoxZ.Text = "";
-            toolStripTextBoxX.Text = "";
-            toolStripTextBoxA.Text = "";
-            toolStripTextBoxB.Text = "";
-        }
+        private void toolStripMenuItem1_CheckedChanged(object sender, EventArgs e) {term = 1;}
+
+        private void toolStripMenuItem2_CheckedChanged(object sender, EventArgs e) {term = 2;}
+
+        private void toolStripMenuItem3_CheckedChanged(object sender, EventArgs e) {term = 3;}
+
+
+
+
     }
 }

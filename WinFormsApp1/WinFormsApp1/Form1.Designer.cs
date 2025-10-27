@@ -28,131 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            toolStripComboBoxY = new ToolStripComboBox();
-            toolStripComboBoxZ = new ToolStripComboBox();
-            toolStripTextBoxX = new ToolStripTextBox();
-            toolStripTextBoxA = new ToolStripTextBox();
-            toolStripTextBoxB = new ToolStripTextBox();
-            toolStripSeparator1 = new ToolStripSeparator();
-            calcToolStripMenuItem = new ToolStripMenuItem();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            menuStrip1 = new MenuStrip();
-            menuToolStripMenuItem = new ToolStripMenuItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            statusStrip1 = new StatusStrip();
+            toolStripDropDownButton1 = new ToolStripDropDownButton();
             toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
-            toolStripSeparator2 = new ToolStripSeparator();
-            closeToolStripMenuItem = new ToolStripMenuItem();
-            contextMenuStrip1.SuspendLayout();
-            menuStrip1.SuspendLayout();
+            toolStripMenuItem3 = new ToolStripMenuItem();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // toolStripComboBoxY
+            // statusStrip1
             // 
-            toolStripComboBoxY.BackColor = SystemColors.Window;
-            toolStripComboBoxY.Items.AddRange(new object[] { "30", "45", "60", "120", "180" });
-            toolStripComboBoxY.Name = "toolStripComboBoxY";
-            toolStripComboBoxY.Size = new Size(121, 33);
-            toolStripComboBoxY.ToolTipText = "y";
-            toolStripComboBoxY.SelectedIndexChanged += toolStripComboBoxA_SelectedIndexChanged;
+            statusStrip1.ImageScalingSize = new Size(24, 24);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, toolStripStatusLabel1 });
+            statusStrip1.Location = new Point(0, 455);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(828, 31);
+            statusStrip1.TabIndex = 0;
+            statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripComboBoxZ
+            // toolStripDropDownButton1
             // 
-            toolStripComboBoxZ.Items.AddRange(new object[] { "0,0001", "0,01", "0,1", "10", "100", "1000", "10000" });
-            toolStripComboBoxZ.Name = "toolStripComboBoxZ";
-            toolStripComboBoxZ.Size = new Size(121, 33);
-            toolStripComboBoxZ.ToolTipText = "z";
-            // 
-            // toolStripTextBoxX
-            // 
-            toolStripTextBoxX.Name = "toolStripTextBoxX";
-            toolStripTextBoxX.Size = new Size(100, 31);
-            toolStripTextBoxX.ToolTipText = "X";
-            // 
-            // toolStripTextBoxA
-            // 
-            toolStripTextBoxA.Name = "toolStripTextBoxA";
-            toolStripTextBoxA.Size = new Size(100, 31);
-            toolStripTextBoxA.ToolTipText = "a";
-            // 
-            // toolStripTextBoxB
-            // 
-            toolStripTextBoxB.Name = "toolStripTextBoxB";
-            toolStripTextBoxB.Size = new Size(100, 31);
-            toolStripTextBoxB.ToolTipText = "b";
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(178, 6);
-            // 
-            // calcToolStripMenuItem
-            // 
-            calcToolStripMenuItem.Name = "calcToolStripMenuItem";
-            calcToolStripMenuItem.Size = new Size(181, 32);
-            calcToolStripMenuItem.Text = "В&ычислить";
-            calcToolStripMenuItem.Click += calcToolStripMenuItem_Click;
-            // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { toolStripComboBoxY, toolStripComboBoxZ, toolStripTextBoxX, toolStripTextBoxA, toolStripTextBoxB, toolStripSeparator1, calcToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(182, 225);
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(828, 33);
-            menuStrip1.TabIndex = 2;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // menuToolStripMenuItem
-            // 
-            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2, toolStripSeparator2, closeToolStripMenuItem });
-            menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            menuToolStripMenuItem.Size = new Size(73, 29);
-            menuToolStripMenuItem.Text = "&Menu";
+            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2, toolStripMenuItem3 });
+            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
+            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
+            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            toolStripDropDownButton1.Size = new Size(42, 28);
+            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
             // toolStripMenuItem1
             // 
+            toolStripMenuItem1.CheckOnClick = true;
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(299, 34);
-            toolStripMenuItem1.Text = "Вычислить выражение";
-            toolStripMenuItem1.Click += calcToolStripMenuItem_Click;
+            toolStripMenuItem1.Size = new Size(270, 34);
+            toolStripMenuItem1.Text = "z = x/(|y-x^2|)";
+            toolStripMenuItem1.CheckedChanged += toolStripMenuItem1_CheckedChanged;
             // 
             // toolStripMenuItem2
             // 
+            toolStripMenuItem2.CheckOnClick = true;
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(299, 34);
-            toolStripMenuItem2.Text = "Очистить ввод";
-            toolStripMenuItem2.Click += toolStripMenuItem2_Click;
+            toolStripMenuItem2.Size = new Size(270, 34);
+            toolStripMenuItem2.Text = "f = sqrt(|x-sqrt(y)|)";
+            toolStripMenuItem2.CheckedChanged += toolStripMenuItem2_CheckedChanged;
             // 
-            // toolStripSeparator2
+            // toolStripMenuItem3
             // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(296, 6);
+            toolStripMenuItem3.CheckOnClick = true;
+            toolStripMenuItem3.Name = "toolStripMenuItem3";
+            toolStripMenuItem3.Size = new Size(270, 34);
+            toolStripMenuItem3.Text = "z = cosx + siny";
+            toolStripMenuItem3.CheckedChanged += toolStripMenuItem3_CheckedChanged;
             // 
-            // closeToolStripMenuItem
+            // toolStripStatusLabel1
             // 
-            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(299, 34);
-            closeToolStripMenuItem.Text = "В&ыход";
-            closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(0, 24);
             // 
             // Form1
             // 
             ClientSize = new Size(828, 486);
-            ContextMenuStrip = contextMenuStrip1;
-            Controls.Add(menuStrip1);
+            Controls.Add(statusStrip1);
             Name = "Form1";
-            contextMenuStrip1.ResumeLayout(false);
-            contextMenuStrip1.PerformLayout();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            MouseMove += Form1_MouseMove;
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -162,19 +104,11 @@
 
 
         }
-        private ToolStripComboBox toolStripComboBoxY;
-        private ToolStripComboBox toolStripComboBoxZ;
-        private ToolStripTextBox toolStripTextBoxX;
-        private ToolStripTextBox toolStripTextBoxA;
-        private ToolStripTextBox toolStripTextBoxB;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem calcToolStripMenuItem;
-        private ContextMenuStrip contextMenuStrip1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem menuToolStripMenuItem;
+        private StatusStrip statusStrip1;
+        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem2;
-        private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem closeToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem3;
     }
 }
