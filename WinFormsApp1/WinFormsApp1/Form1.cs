@@ -1,3 +1,5 @@
+Ôªøusing static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace WinFormsApp1
 
 
@@ -9,16 +11,108 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        private void btnChooseColor_Click(object sender, EventArgs e)
+        double x, y, U;
+        int n;
+        string inputFile, outputFile;
+
+        private void textBoxInputN_TextChanged(object sender, EventArgs e)
         {
-            ColorDialog dlg = new ColorDialog();
-            dlg.FullOpen = true;
-            dlg.ShowHelp = true;
-            dlg.Color = panelChooseColor.BackColor;
+            try
+            {
+                n = Convert.ToInt32(textBoxInputN.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("–í–≤–µ–¥–∏—Ç–µ —Ü–µ–ª–æ—á–∏—Å–ª–µ–Ω–Ω–æ–µ –∑–Ω–∞—á–µ–Ω–∏–µ.");
+            }
+        }
+
+
+        private void readXY()
+        {
+            string[] lines = File.ReadAllLines(inputFile);
+            try
+            {
+                if (lines.Length >= 2)
+                {
+                    x = Convert.ToDouble(lines[0]);
+                    y = Convert.ToDouble(lines[1]);
+
+                }
+                else
+                {
+                    MessageBox.Show("–§–∞–π–ª –¥–æ–ª–∂–µ–Ω —Å–æ–¥–µ—Ä–∂–∞—Ç—å –º–∏–Ω–∏–º—É–º 2 —Å—Ç—Ä–æ–∫–∏");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"–û—à–∏–±–∫–∞ —á—Ç–µ–Ω–∏—è —Ñ–∞–π–ª–∞: {ex.Message}");
+            }
+        }
+
+        private void saveResultToFile()
+        {
+            string filePath = Path.Combine(outputFile, "output.txt");
+            File.WriteAllText(filePath, U.ToString(System.Globalization.CultureInfo.InvariantCulture));
+        }
+
+        private void Calc()
+        {
+            readXY();
+            double result = 1;
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    result -= ((Math.Pow(Math.Sin(x), i + 1)) * Math.Pow(y, 2 * i - 1)) / i + 1;
+                }
+                else
+                {
+                    result += ((Math.Pow(Math.Sin(x), i + 1)) * y) / 2;
+                }
+            }
+            U = result;
+        }
+
+        private void btnCalcU_Click(object sender, EventArgs e)
+        {
+            Calc();
+            txtResultU.Text = U.ToString();
+            saveResultToFile();
+
+        }
+
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnChooseFileWithData_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = Application.StartupPath;
+            dlg.Filter = "–¢–µ–∫—Å—Ç–æ–≤—ã–µ —Ñ–∞–π–ª—ã (*.txt)|*.txt";
+            dlg.FilterIndex = 3;
+            dlg.Title = "–í—ã–±–µ—Ä–∏—Ç–µ —Ñ–∞–π–ª —Å –¥–∞–Ω–Ω—ã–º–∏";
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                panelChooseColor.BackColor = dlg.Color;
+                txtChooseFileWithData.Text = dlg.FileName;
+                inputFile = dlg.FileName;
+            }
+        }
+
+        private void btnChooseFolderToSave_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            dlg.Description = "–í—ã–±–µ—Ä–∏—Ç–µ –ø–∞–ø–∫—É –¥–ª—è —Å–æ—Ö—Ä–∞–Ω–µ–Ω–∏—è —Ä–µ–∑—É–ª—å—Ç–∞—Ç–∞";
+            dlg.ShowNewFolderButton = true;
+            dlg.SelectedPath = Application.StartupPath;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                txtChooseFolderToSave.Text = dlg.SelectedPath;
+                outputFile = dlg.SelectedPath;
             }
         }
 
@@ -33,37 +127,15 @@ namespace WinFormsApp1
             {
                 txtChooseFont.Font = dlg.Font;
                 txtChooseFont.ForeColor = dlg.Color;
-            }
-        }
+                btnCalcU.Font = dlg.Font;
+                btnChooseFileWithData.Font = dlg.Font;
+                btnChooseFolderToSave.Font = dlg.Font;
+                btnChooseFont.Font = dlg.Font;
+                btnCloseForm.Font = dlg.Font;
 
-        private void btnChooseFile_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dlg =  new OpenFileDialog();
-            dlg.InitialDirectory = Application.StartupPath;
-            dlg.Filter = "txt files (*.txt)|*.txt |" +
-                "ÃÓË Ù‡ÈÎ˚ (‡Ò¯ËÂÌËˇ ÌÂ ÔË‰ÛÏ‡Î)|*.xxx|" +
-                "—·ÓÍË (*.exe)|*.exe";
-            dlg.FilterIndex = 3;
-            dlg.Title = "¬˚·Ó ÏÓÂ„Ó Ù‡ÈÎ‡";
-
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                txtChooseFile.Text = dlg.FileName;
             }
 
-        }
 
-        private void btnChooseFolder_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
-            dlg.Description = "¬˚·ÂËÚÂ Ô‡ÔÍÛ ‰Îˇ ‰ÂÏÓÌÒÚ‡ˆËË ‡·ÓÚ˚ ‰Ë‡ÎÓ„‡";
-            dlg.ShowNewFolderButton = true;
-            dlg.SelectedPath = Application.StartupPath;
-
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                txtChooseFolder.Text = dlg.SelectedPath;
-            }
         }
     }
 }

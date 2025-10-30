@@ -28,118 +28,135 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnChooseColor = new Button();
-            panelChooseColor = new Panel();
+            btnChooseFileWithData = new Button();
+            txtChooseFileWithData = new TextBox();
+            btnChooseFolderToSave = new Button();
+            txtChooseFolderToSave = new TextBox();
             btnChooseFont = new Button();
             txtChooseFont = new TextBox();
-            btnChooseFile = new Button();
-            txtChooseFile = new TextBox();
-            btnChooseFolder = new Button();
-            txtChooseFolder = new TextBox();
+            textBoxN = new TextBox();
+            textBoxInputN = new TextBox();
+            btnCalcU = new Button();
+            btnCloseForm = new Button();
+            txtResultU = new TextBox();
             SuspendLayout();
             // 
-            // btnChooseColor
+            // btnChooseFileWithData
             // 
-            btnChooseColor.BackColor = SystemColors.Control;
-            btnChooseColor.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
-            btnChooseColor.FlatAppearance.MouseDownBackColor = Color.Silver;
-            btnChooseColor.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
-            btnChooseColor.FlatStyle = FlatStyle.Popup;
-            btnChooseColor.Location = new Point(42, 37);
-            btnChooseColor.Name = "btnChooseColor";
-            btnChooseColor.Size = new Size(151, 44);
-            btnChooseColor.TabIndex = 0;
-            btnChooseColor.Text = "Выбор цвета";
-            btnChooseColor.UseVisualStyleBackColor = false;
-            btnChooseColor.Click += btnChooseColor_Click;
+            btnChooseFileWithData.Location = new Point(48, 36);
+            btnChooseFileWithData.Name = "btnChooseFileWithData";
+            btnChooseFileWithData.Size = new Size(254, 45);
+            btnChooseFileWithData.TabIndex = 0;
+            btnChooseFileWithData.Text = "Выбрать файл с данными";
+            btnChooseFileWithData.UseVisualStyleBackColor = true;
+            btnChooseFileWithData.Click += btnChooseFileWithData_Click;
             // 
-            // panelChooseColor
+            // txtChooseFileWithData
             // 
-            panelChooseColor.Location = new Point(209, 45);
-            panelChooseColor.Name = "panelChooseColor";
-            panelChooseColor.Size = new Size(533, 31);
-            panelChooseColor.TabIndex = 1;
+            txtChooseFileWithData.Location = new Point(354, 45);
+            txtChooseFileWithData.Name = "txtChooseFileWithData";
+            txtChooseFileWithData.Size = new Size(381, 31);
+            txtChooseFileWithData.TabIndex = 1;
+            // 
+            // btnChooseFolderToSave
+            // 
+            btnChooseFolderToSave.Location = new Point(47, 106);
+            btnChooseFolderToSave.Name = "btnChooseFolderToSave";
+            btnChooseFolderToSave.Size = new Size(254, 45);
+            btnChooseFolderToSave.TabIndex = 2;
+            btnChooseFolderToSave.Text = "Сохранить в...";
+            btnChooseFolderToSave.UseVisualStyleBackColor = true;
+            btnChooseFolderToSave.Click += btnChooseFolderToSave_Click;
+            // 
+            // txtChooseFolderToSave
+            // 
+            txtChooseFolderToSave.Location = new Point(354, 113);
+            txtChooseFolderToSave.Name = "txtChooseFolderToSave";
+            txtChooseFolderToSave.Size = new Size(381, 31);
+            txtChooseFolderToSave.TabIndex = 3;
             // 
             // btnChooseFont
             // 
-            btnChooseFont.BackColor = SystemColors.Control;
-            btnChooseFont.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
-            btnChooseFont.FlatAppearance.MouseDownBackColor = Color.Silver;
-            btnChooseFont.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
-            btnChooseFont.FlatStyle = FlatStyle.Popup;
-            btnChooseFont.Location = new Point(42, 104);
+            btnChooseFont.Location = new Point(48, 182);
             btnChooseFont.Name = "btnChooseFont";
-            btnChooseFont.Size = new Size(151, 44);
-            btnChooseFont.TabIndex = 2;
-            btnChooseFont.Text = "Выбор шрифта";
-            btnChooseFont.UseVisualStyleBackColor = false;
+            btnChooseFont.Size = new Size(254, 42);
+            btnChooseFont.TabIndex = 4;
+            btnChooseFont.Text = "Выбрать шрифт для формы";
+            btnChooseFont.UseVisualStyleBackColor = true;
             btnChooseFont.Click += btnChooseFont_Click;
             // 
             // txtChooseFont
             // 
-            txtChooseFont.Location = new Point(213, 112);
+            txtChooseFont.Location = new Point(354, 189);
             txtChooseFont.Name = "txtChooseFont";
-            txtChooseFont.Size = new Size(529, 31);
-            txtChooseFont.TabIndex = 3;
-            txtChooseFont.Text = "Образец шрифта";
+            txtChooseFont.Size = new Size(381, 31);
+            txtChooseFont.TabIndex = 5;
+            txtChooseFont.Text = "Образец шрифта ABZ";
             // 
-            // btnChooseFile
+            // textBoxN
             // 
-            btnChooseFile.BackColor = SystemColors.Control;
-            btnChooseFile.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
-            btnChooseFile.FlatAppearance.MouseDownBackColor = Color.Silver;
-            btnChooseFile.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
-            btnChooseFile.FlatStyle = FlatStyle.Popup;
-            btnChooseFile.Location = new Point(42, 217);
-            btnChooseFile.Name = "btnChooseFile";
-            btnChooseFile.Size = new Size(151, 47);
-            btnChooseFile.TabIndex = 4;
-            btnChooseFile.Text = "Выбор файла";
-            btnChooseFile.UseVisualStyleBackColor = false;
-            btnChooseFile.Click += btnChooseFile_Click;
+            textBoxN.BackColor = SystemColors.Control;
+            textBoxN.BorderStyle = BorderStyle.None;
+            textBoxN.Font = new Font("Segoe UI", 15F);
+            textBoxN.Location = new Point(49, 274);
+            textBoxN.Name = "textBoxN";
+            textBoxN.Size = new Size(57, 40);
+            textBoxN.TabIndex = 6;
+            textBoxN.Text = "n = ";
             // 
-            // txtChooseFile
+            // textBoxInputN
             // 
-            txtChooseFile.Location = new Point(209, 225);
-            txtChooseFile.Name = "txtChooseFile";
-            txtChooseFile.Size = new Size(533, 31);
-            txtChooseFile.TabIndex = 5;
+            textBoxInputN.Location = new Point(111, 284);
+            textBoxInputN.Name = "textBoxInputN";
+            textBoxInputN.Size = new Size(190, 31);
+            textBoxInputN.TabIndex = 7;
+            textBoxInputN.TextChanged += textBoxInputN_TextChanged;
             // 
-            // btnChooseFolder
+            // btnCalcU
             // 
-            btnChooseFolder.BackColor = SystemColors.Control;
-            btnChooseFolder.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
-            btnChooseFolder.FlatAppearance.MouseDownBackColor = Color.Silver;
-            btnChooseFolder.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
-            btnChooseFolder.FlatStyle = FlatStyle.Popup;
-            btnChooseFolder.Location = new Point(42, 300);
-            btnChooseFolder.Name = "btnChooseFolder";
-            btnChooseFolder.Size = new Size(151, 47);
-            btnChooseFolder.TabIndex = 6;
-            btnChooseFolder.Text = "Выбор каталога";
-            btnChooseFolder.UseVisualStyleBackColor = false;
-            btnChooseFolder.Click += btnChooseFolder_Click;
+            btnCalcU.Location = new Point(493, 393);
+            btnCalcU.Name = "btnCalcU";
+            btnCalcU.Size = new Size(112, 34);
+            btnCalcU.TabIndex = 8;
+            btnCalcU.Text = "В&ычислить\r\n";
+            btnCalcU.UseVisualStyleBackColor = true;
+            btnCalcU.Click += btnCalcU_Click;
             // 
-            // txtChooseFolder
+            // btnCloseForm
             // 
-            txtChooseFolder.Location = new Point(209, 313);
-            txtChooseFolder.Name = "txtChooseFolder";
-            txtChooseFolder.Size = new Size(533, 31);
-            txtChooseFolder.TabIndex = 7;
+            btnCloseForm.Location = new Point(623, 393);
+            btnCloseForm.Name = "btnCloseForm";
+            btnCloseForm.Size = new Size(112, 34);
+            btnCloseForm.TabIndex = 9;
+            btnCloseForm.Text = "З&акрыть";
+            btnCloseForm.UseVisualStyleBackColor = true;
+            btnCloseForm.Click += btnCloseForm_Click;
+            // 
+            // txtResultU
+            // 
+            txtResultU.BackColor = SystemColors.Control;
+            txtResultU.BorderStyle = BorderStyle.None;
+            txtResultU.Location = new Point(354, 287);
+            txtResultU.Name = "txtResultU";
+            txtResultU.Size = new Size(381, 24);
+            txtResultU.TabIndex = 10;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(txtChooseFolder);
-            Controls.Add(btnChooseFolder);
-            Controls.Add(txtChooseFile);
-            Controls.Add(btnChooseFile);
+            Controls.Add(txtResultU);
+            Controls.Add(btnCloseForm);
+            Controls.Add(btnCalcU);
+            Controls.Add(textBoxInputN);
+            Controls.Add(textBoxN);
             Controls.Add(txtChooseFont);
             Controls.Add(btnChooseFont);
-            Controls.Add(panelChooseColor);
-            Controls.Add(btnChooseColor);
+            Controls.Add(txtChooseFolderToSave);
+            Controls.Add(btnChooseFolderToSave);
+            Controls.Add(txtChooseFileWithData);
+            Controls.Add(btnChooseFileWithData);
             Name = "Form1";
             Text = "Тестирование диалоговых окон";
             ResumeLayout(false);
@@ -148,13 +165,16 @@
 
         #endregion
 
-        private Button btnChooseColor;
-        private Panel panelChooseColor;
+        private Button btnChooseFileWithData;
+        private TextBox txtChooseFileWithData;
+        private Button btnChooseFolderToSave;
+        private TextBox txtChooseFolderToSave;
         private Button btnChooseFont;
         private TextBox txtChooseFont;
-        private Button btnChooseFile;
-        private TextBox txtChooseFile;
-        private Button btnChooseFolder;
-        private TextBox txtChooseFolder;
+        private TextBox textBoxN;
+        private TextBox textBoxInputN;
+        private Button btnCalcU;
+        private Button btnCloseForm;
+        private TextBox txtResultU;
     }
 }
