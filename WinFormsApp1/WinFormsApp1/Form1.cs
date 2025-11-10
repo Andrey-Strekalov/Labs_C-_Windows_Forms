@@ -7,7 +7,6 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        
 
         private void ShowData(String datapath)
         {
@@ -23,8 +22,11 @@ namespace WinFormsApp1
 
             dgvRaw.DataSource = data.GetRawData();
             dgvRaw.ReadOnly = true;
-            dgvSummary.DataSource = data.GetSummaryData();
-            dgvSummary.ReadOnly = true;
+            dgvSummaryPurchase.DataSource = data.GetSummaryDataPurchase();
+            dgvSummaryPurchase.ReadOnly = true;
+            dgvSummarySale.DataSource = data.GetSummaryDataSale();
+            dgvSummarySale.ReadOnly = true;
+
         }
 
         private void btnLoad_Click(object sender, EventArgs e)

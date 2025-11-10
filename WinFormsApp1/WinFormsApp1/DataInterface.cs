@@ -9,6 +9,7 @@ namespace WinFormsApp1
     internal class DataInterface
     {
         extern List<RawDataItem> GetRawData();
-        extern List<SummaryDataItem> GetSummaryData();
+        extern List<SummaryDataItemSale> GetSummaryDataSale();
+        extern List<SummaryDataItemPurchase> GetSummaryDataPurchase();
     }
 }

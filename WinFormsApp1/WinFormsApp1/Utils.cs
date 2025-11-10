@@ -15,10 +15,7 @@ namespace WinFormsApp1
             {
                 dict = new Dictionary<int, string>(5);
                 dict.Add(0, "Продукты");
-                dict.Add(1, "Бытовая химия");
-                dict.Add(2, "Одежда");
-                dict.Add(3, "Фрукты");
-                dict.Add(4, "Полиграфия");
+                dict.Add(1, "Химия");
             }
         }
         public static string GetGroupByNumber(int number)

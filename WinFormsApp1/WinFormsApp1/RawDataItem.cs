@@ -8,14 +8,19 @@ namespace WinFormsApp1
 {
     internal class RawDataItem
     {
-        public String name { get; set; }
-        public int Group {  get; set; }
-        public String Part {  get; set; }
-        public float Price { get; set; }
-        public float Count { get; set; }
-        public float Summ
+        public String Name { get; set; }
+        public int Group { get; set; }
+        public double Count { get; set; }
+
+        public double PurchasePrice { get; set; }
+        public double SalePrice { get; set; }
+        public double SummPurchasePrice
         {
-            get { return Count * Price; }
+            get { return Count * PurchasePrice; }
+        }
+        public double SummSalePrice
+        {
+            get { return Count * SalePrice; }
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1
 {
-    internal class SummaryDataItem
+    internal class SummaryDataItemPurchase
     {
         public String GroupName {  get; set; }
-        public float GroupSumm { get; set; }
+        public double GroupSummPurchase { get; set; }
     }
 }

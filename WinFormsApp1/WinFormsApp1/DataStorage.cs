@@ -19,7 +19,8 @@ namespace WinFormsApp1
             }
         }
         private List<RawDataItem> rawdata;
-        private List<SummaryDataItem> sumdata;
+        private List<SummaryDataItemPurchase> sumdataPurchase;
+        private List<SummaryDataItemSale> sumdataSale;
         private char devider = '%';
         public DataStorage() { }
 
@@ -36,16 +37,18 @@ namespace WinFormsApp1
                     string[] items = line.Split(devider);
                     var item = new RawDataItem()
                     {
-                        name = items[0].Trim(),
-                        Part = items[1].Trim(),
-                        Group = Convert.ToInt32(items[2].Trim()),
-                        Price = Convert.ToSingle(items[3].Trim()),
+                        Name = items[0].Trim(),
+                        //Part = items[1].Trim(),
+                        Group = Convert.ToInt32(items[1].Trim()),
+                        PurchasePrice = Convert.ToDouble(items[2].Trim()),
+                        SalePrice = Convert.ToDouble(items[3].Trim()),
                         Count = Convert.ToSingle(items[4].Trim())
                     };
                     rawdata.Add(item);
                 }
                 sr.Close();
-                BuildSummary();
+                BuildSummarySale();
+                BuildSummaryPurchase();
             }
             catch (IOException ex)
             {
@@ -54,28 +57,55 @@ namespace WinFormsApp1
             return true;
         }
 
-        private void BuildSummary()
+        private void BuildSummarySale()
         {
-            Dictionary<int, float> tmp = new Dictionary<int, float>();
+            Dictionary<int, double> tmp = new Dictionary<int, double>();
             foreach (var item in rawdata)
             {
                 if (tmp.ContainsKey(item.Group))
                 {
-                    tmp[item.Group] += item.Summ;
+                    tmp[item.Group] += item.SalePrice;
                 }
                 else
                 {
-                    tmp[item.Group] = item.Summ;
+                    tmp[item.Group] = item.SalePrice;
                 }
             }
 
-            sumdata = new List<SummaryDataItem>();
+            sumdataSale = new List<SummaryDataItemSale>();
             foreach (var item in tmp)
             {
-                sumdata.Add(new SummaryDataItem()
+                sumdataSale.Add(new SummaryDataItemSale()
                 {
                     GroupName = Utils.GetGroupByNumber(item.Key),
-                    GroupSumm = item.Value,
+                    GroupSummSale = item.Value,
+                });
+            }
+        }
+
+        private void BuildSummaryPurchase()
+        {
+            Dictionary<int, double> tmp = new Dictionary<int, double>();
+            foreach (var item in rawdata)
+            {
+                if (tmp.ContainsKey(item.Group))
+                {
+                    tmp[item.Group] += item.PurchasePrice;
+                }
+                else
+                {
+                    tmp[item.Group] = item.PurchasePrice;
+                }
+            }
+
+            sumdataPurchase = new List<SummaryDataItemPurchase>();
+            foreach (var item in tmp)
+            {
+                sumdataPurchase.Add(new SummaryDataItemPurchase()
+                {
+                    GroupName = Utils.GetGroupByNumber(item.Key),
+                    GroupSummPurchase = item.Value,
+
                 });
             }
         }
@@ -107,11 +137,23 @@ namespace WinFormsApp1
             }
         }
 
-        public List<SummaryDataItem> GetSummaryData()
+        public List<SummaryDataItemPurchase> GetSummaryDataPurchase()
         {
             if (this.IsReady)
             {
-                return sumdata;
+                return sumdataPurchase;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public List<SummaryDataItemSale> GetSummaryDataSale()
+        {
+            if (this.IsReady)
+            {
+                return sumdataSale;
             }
             else
             {
