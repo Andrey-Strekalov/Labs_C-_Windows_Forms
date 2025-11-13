@@ -42,7 +42,7 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            textBox1 = new TextBox();
+            comboBoxChooseEquation = new ComboBox();
             SuspendLayout();
             // 
             // txtA
@@ -165,22 +165,22 @@
             label6.TabIndex = 8;
             label6.Text = "Режим вывода";
             // 
-            // textBox1
+            // comboBoxChooseEquation
             // 
-            textBox1.BackColor = SystemColors.Control;
-            textBox1.Font = new Font("Segoe UI", 13F);
-            textBox1.Location = new Point(22, 42);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(278, 42);
-            textBox1.TabIndex = 9;
-            textBox1.Text = "F = ax^(-p)*sin(kx+b)";
+            comboBoxChooseEquation.FormattingEnabled = true;
+            comboBoxChooseEquation.Items.AddRange(new object[] { "F = ax ^ (-p) * sin(kx + b)", "F = sin ^ 2x + sin(k*x) + p", "F = a*x ^ 3 - 1/p*k", "F = b*(x ^ 3 - 3) ^ k-p" });
+            comboBoxChooseEquation.Location = new Point(12, 50);
+            comboBoxChooseEquation.Name = "comboBoxChooseEquation";
+            comboBoxChooseEquation.Size = new Size(266, 33);
+            comboBoxChooseEquation.TabIndex = 9;
+            comboBoxChooseEquation.SelectedIndexChanged += comboBoxChooseEquation_SelectedIndexChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(705, 887);
-            Controls.Add(textBox1);
+            Controls.Add(comboBoxChooseEquation);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -217,6 +217,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBox1;
+        private ComboBox comboBoxChooseEquation;
     }
 }

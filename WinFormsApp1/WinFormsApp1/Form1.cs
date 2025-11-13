@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
+using System.Linq.Expressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinFormsApp1
 {
@@ -28,13 +30,14 @@ namespace WinFormsApp1
         // Цвет графика
         Color color = Color.Red;
         // Режим отображения
-        int mode = 1;
+        int mode = 0;
         // Шаг расчета функции
         double dx = 0.5;
         // Интервал изменения x
         double x0 = 0.0, xn = 400.00;
         // Коэффициенты функции
         double a = 5, b = 100, p = -0.5, k = 2;
+        int equation_index = 0;
 
         private double Calc(double x)
         {
@@ -44,7 +47,23 @@ namespace WinFormsApp1
             }
             else
             {
-                return a * Math.Pow(x, -p) * Math.Sin(k * x + b);
+
+                switch (equation_index)
+                {
+                    case 0:
+                        return a * Math.Pow(x, -p) * Math.Sin(k * x + b);
+                        break;
+                    case 1:
+                        return Math.Pow(Math.Sin(2 * x), 2) + Math.Sin(k * x) + p;
+                        break;
+                    case 2:
+                        return Math.Pow(a * x, 3) - 1 / (p * k);
+                        break;
+                    case 3:
+                        return b * Math.Pow((Math.Pow(x, 3) - 3), k - p);
+                        break;
+                    default: return 0;
+                }
             }
         }
 
@@ -72,7 +91,7 @@ namespace WinFormsApp1
 
         private void comboMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mode = ((ComboBox)sender).SelectedIndex;
+            mode = comboMode.SelectedIndex;
             panelGraf.Invalidate();
         }
 
@@ -111,42 +130,45 @@ namespace WinFormsApp1
         {
             Point? previousPoint = null;
             Pen graphPen = new Pen(color, 2);
-            Brush pointBrush = new SolidBrush(color);
-
             try
             {
                 for (double x = x0; x <= xn; x += dx)
                 {
                     double y = Calc(x);
 
+                    // Ограничиваем Y разумными пределами
+                    y = Math.Max(-1000, Math.Min(1000, y));
+
                     int pixelX = (int)((x - x0) * xScale);
-                    int pixelY = (int)(panelGraf.Height / 2 - y * yScale); // Центрируем по оси Y
+                    int pixelY = (int)(panelGraf.Height / 2 - y * yScale);
 
                     Point currentPoint = new Point(pixelX, pixelY);
 
-                    if (previousPoint != null)
+                    if (previousPoint != null && mode == 0)
                     {
-                        if (mode == 0) // Линии
-                        {
-                            g.DrawLine(graphPen, previousPoint.Value, currentPoint);
-                        }
-                        else if (mode == 1) // Точки
-                        {
-                            g.FillEllipse(pointBrush, currentPoint.X - 2, currentPoint.Y - 2, 4, 4);
-                        }
+                        g.DrawLine(graphPen, previousPoint.Value, currentPoint);
+                    }
+
+                    if (mode == 1)
+                    {
+                        g.FillEllipse(new SolidBrush(color), currentPoint.X - 2, currentPoint.Y - 2, 4, 4);
                     }
 
                     previousPoint = currentPoint;
                 }
-            }
-            finally
-            {
+
                 graphPen.Dispose();
-                pointBrush.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Ошибка!" + ex.ToString());
             }
         }
-
-
-
+        private void comboBoxChooseEquation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            equation_index = comboBoxChooseEquation.SelectedIndex;
+        }
     }
 }
