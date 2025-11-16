@@ -28,14 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            animationTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
+            // 
+            // animationTimer
+            // 
+            animationTimer.Enabled = true;
+            animationTimer.Interval = 500;
             // 
             // Form1
             // 
-            ClientSize = new Size(751, 486);
+            ClientSize = new Size(800, 800);
             Name = "Form1";
             Paint += Form1_Paint;
             MouseDown += Form1_MouseDown;
+            MouseLeave += Form1_MouseLeave;
+            MouseMove += Form1_MouseMove;
             MouseUp += Form1_MouseUp;
             ResumeLayout(false);
 
@@ -45,5 +54,6 @@
 
 
         }
+        private System.Windows.Forms.Timer animationTimer;
     }
 }
